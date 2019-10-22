@@ -1,12 +1,23 @@
 digraph G {
 fontsize="24";
-label="basic\nTuesday, 05-Mar-19 16:27:30 +10";
+label="basic\nTuesday, 22-Oct-19 17:22:16 +10";
 nojustify=true;
 ordering=out;
 rankdir=LR;
 size="30";
 "admin_menu\nmenu" [color=blue, fontcolor=blue, group=menus, shape=record];
 "default_menu\nmenu" [color=blue, fontcolor=blue, group=menus, shape=record];
+"cn_connection_request_create\npage" -> "@1CNConnectionRequest\ncontract"  [ color=red ]
+"cn_connection_request_create\npage" [color=green, fontcolor=green, group=pages, shape=record];
+"cn_connection_requests_list\npage" -> "@1VotingRunNewCNConnection\ncontract"  [ color=red ]
+"cn_connection_requests_list\npage" -> "@1CNConnectionRequestDelete\ncontract"  [ color=red ]
+"1applications\ntable" -> "cn_connection_requests_list\npage"
+"1voting_templates\ntable" -> "cn_connection_requests_list\npage"
+"src\ntable" -> "cn_connection_requests_list\npage"
+"cn_connection_requests_list\npage" -> "@1pager_header\nblock"  [ color=green, label=include ]
+"cn_connection_requests_list\npage" -> "@1search\nblock"  [ color=green, label=include ]
+"cn_connection_requests_list\npage" -> "@1pager\nblock"  [ color=green, label=include ]
+"cn_connection_requests_list\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "contract_bind_request\npage" -> "NotificationsClose\ncontract"  [ color=red ]
 "contract_bind_request\npage" -> "@1BindWallet\ncontract"  [ color=red ]
 "1notifications\ntable" -> "contract_bind_request\npage"
@@ -95,6 +106,7 @@ size="30";
 "membership_user_view\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "message_create\npage" -> "@1NotificationsSend\ncontract"  [ color=red ]
 "1roles\ntable" -> "message_create\npage"
+"1groups\ntable" -> "message_create\npage"
 "message_create\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "message_view\npage" -> "@1NotificationsClose\ncontract"  [ color=red ]
 "message_view\npage" -> "@1NotificationsSend\ncontract"  [ color=red ]
@@ -138,6 +150,7 @@ size="30";
 "1applications\ntable" -> "notifications_testpage_popup\npage"
 "1notifications\ntable" -> "notifications_testpage_popup\npage"
 "notifications_testpage_popup\npage" [color=green, fontcolor=green, group=pages, shape=record];
+"platform_apps_settings\npage" -> "@1Deploy\ncontract"  [ color=red ]
 "platform_apps_settings\npage" -> "@1PlatformAppsSettings\ncontract"  [ color=red ]
 "1applications\ntable" -> "platform_apps_settings\npage"
 "1roles\ntable" -> "platform_apps_settings\npage"
@@ -172,7 +185,7 @@ size="30";
 "1buffer_data\ntable" -> "roles_create\npage"
 "roles_create\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "roles_list\npage" -> "@1RolesDelete\ncontract"  [ color=red ]
-"roles_list\npage" -> "@1RolesInstall\ncontract"  [ color=red ]
+"roles_list\npage" -> "@1DeployRoles\ncontract"  [ color=red ]
 "ecosystem\ntable" -> "roles_list\npage"
 "src_roles\ntable" -> "roles_list\npage"
 "1applications\ntable" -> "roles_list\npage"
@@ -198,6 +211,10 @@ size="30";
 "1ecosystems\ntable" -> "select_ecosystem\npage"
 "1parameters\ntable" -> "select_ecosystem\npage"
 "select_ecosystem\npage" [color=green, fontcolor=green, group=pages, shape=record];
+"src\ntable" -> "select_group\npage"
+"select_group\npage" -> "@1pager_header\nblock"  [ color=green, label=include ]
+"select_group\npage" -> "@1pager_for_popup\nblock"  [ color=green, label=include ]
+"select_group\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "src\ntable" -> "select_role\npage"
 "select_role\npage" -> "@1pager_header\nblock"  [ color=green, label=include ]
 "select_role\npage" -> "@1pager_for_popup\nblock"  [ color=green, label=include ]
@@ -207,8 +224,6 @@ size="30";
 "select_wallet\npage" -> "@1pager_header\nblock"  [ color=green, label=include ]
 "select_wallet\npage" -> "@1pager_for_popup\nblock"  [ color=green, label=include ]
 "select_wallet\npage" [color=green, fontcolor=green, group=pages, shape=record];
-"1applications\ntable" -> "sysparams_list\npage"
-"1roles_participants\ntable" -> "sysparams_list\npage"
 "src\ntable" -> "sysparams_list\npage"
 "1contracts\ntable" -> "sysparams_list\npage"
 "sysparams_list\npage" -> "@1pager_header\nblock"  [ color=green, label=include ]
@@ -219,7 +234,7 @@ size="30";
 "1metrics\ntable" -> "sysparams_metrics\npage"
 "sysparams_metrics\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "sysparams_voting\npage" -> "@1VotingRunEditPlatformParam\ncontract"  [ color=red ]
-"sysparams_voting\npage" -> "@1VotingRunRemoveConsortiumMember\ncontract"  [ color=red ]
+"sysparams_voting\npage" -> "@1VotingRunRemoveCNConnection\ncontract"  [ color=red ]
 "1applications\ntable" -> "sysparams_voting\npage"
 "1voting_templates\ntable" -> "sysparams_voting\npage"
 "1system_parameters\ntable" -> "sysparams_voting\npage"
@@ -240,21 +255,6 @@ size="30";
 "tokens_send\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "upload_page\npage" -> "@1BufferFileUpload\ncontract"  [ color=red ]
 "upload_page\npage" [color=green, fontcolor=green, group=pages, shape=record];
-"consortium_member_request\npage" -> "@1ConsortiumMemberRequest\ncontract"  [ color=red ]
-"consortium_member_request\npage" [color=green, fontcolor=green, group=pages, shape=record];
-"consortium_member_candidates\npage" -> "@1VotingRunNewConsortiumMember\ncontract"  [ color=red ]
-"1applications\ntable" -> "consortium_member_candidates\npage"
-"1voting_templates\ntable" -> "consortium_member_candidates\npage"
-"src\ntable" -> "consortium_member_candidates\npage"
-"1members\ntable" -> "consortium_member_candidates\npage"
-"consortium_member_candidates\npage" -> "@1pager_header\nblock"  [ color=green, label=include ]
-"consortium_member_candidates\npage" -> "@1search\nblock"  [ color=green, label=include ]
-"consortium_member_candidates\npage" -> "@1pager\nblock"  [ color=green, label=include ]
-"consortium_member_candidates\npage" [color=green, fontcolor=green, group=pages, shape=record];
-"consortium_member_resign\npage" -> "@1ConsortiumMemberResign\ncontract"  [ color=red ]
-"1applications\ntable" -> "consortium_member_resign\npage"
-"1roles_participants\ntable" -> "consortium_member_resign\npage"
-"consortium_member_resign\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "voting_create\npage" -> "@1VotingCreate\ncontract"  [ color=red ]
 "1applications\ntable" -> "voting_create\npage"
 "voting_create\npage" [color=green, fontcolor=green, group=pages, shape=record];
@@ -286,6 +286,7 @@ size="30";
 "1votings\ntable" -> "voting_invite\npage"
 "1votings_participants\ntable" -> "voting_invite\npage"
 "1roles\ntable" -> "voting_invite\npage"
+"1groups\ntable" -> "voting_invite\npage"
 "voting_invite\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "voting_list\npage" -> "@1VotingStatusUpdate\ncontract"  [ color=red ]
 "voting_list\npage" -> "@1VotingDecisionCheck\ncontract"  [ color=red ]
@@ -306,8 +307,9 @@ size="30";
 "1voting_templates\ntable" -> "voting_template_view\npage"
 "1roles\ntable" -> "voting_template_view\npage"
 "voting_template_view\npage" [color=green, fontcolor=green, group=pages, shape=record];
-"voting_templates_list\npage" -> "@1VotingTemplatesInstall\ncontract"  [ color=red ]
+"voting_templates_list\npage" -> "@1DeployVotingTemplates\ncontract"  [ color=red ]
 "1applications\ntable" -> "voting_templates_list\npage"
+"ecosystem\ntable" -> "voting_templates_list\npage"
 "src\ntable" -> "voting_templates_list\npage"
 "voting_templates_list\npage" -> "@1pager_header\nblock"  [ color=green, label=include ]
 "voting_templates_list\npage" -> "@1search\nblock"  [ color=green, label=include ]
@@ -333,7 +335,9 @@ size="30";
 "1roles\ntable" -> "voting_wizard\npage"
 "1members\ntable" -> "voting_wizard\npage"
 "1keys\ntable" -> "voting_wizard\npage"
+"1groups_participants\ntable" -> "voting_wizard\npage"
 "1roles_participants\ntable" -> "voting_wizard\npage"
+"1groups\ntable" -> "voting_wizard\npage"
 "voting_wizard\npage" [color=green, fontcolor=green, group=pages, shape=record];
 "apps_description\nblock" [color=green, fontcolor=green, group=blocks, shape=record];
 "notifications_roles\nblock" -> "@1NotificationsProcess\ncontract"  [ color=red ]
@@ -363,6 +367,10 @@ size="30";
 "BufferFileUpload\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "1buffer_data\ntable" -> "BufferManager\ncontract"
 "BufferManager\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"CNConnectionRequest\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"CNConnectionRequestDelete\ncontract" -> "CNConnectionRequest\ncontract"  [ color=red ]
+"1applications\ntable" -> "CNConnectionRequestDelete\ncontract"
+"CNConnectionRequestDelete\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "DelegateRefresh\ncontract" -> "RolesAssign\ncontract"  [ color=red ]
 "DelegateRefresh\ncontract" -> "RolesUnassign\ncontract"  [ color=red ]
 "1applications\ntable" -> "DelegateRefresh\ncontract"
@@ -374,6 +382,79 @@ size="30";
 "DelegateRefresh\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "1keys\ntable" -> "DeleteMember\ncontract"
 "DeleteMember\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"Deploy\ncontract" -> "DeployBasicPermissions\ncontract"  [ color=red ]
+"Deploy\ncontract" -> "DeployRoles\ncontract"  [ color=red ]
+"Deploy\ncontract" -> "DeploySections\ncontract"  [ color=red ]
+"Deploy\ncontract" -> "DeploySystemPermissions\ncontract"  [ color=red ]
+"Deploy\ncontract" -> "DeployVotingTemplates\ncontract"  [ color=red ]
+"Deploy\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"DeployBasicPermissions\ncontract" -> "CNConnectionRequest\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "CNConnectionRequestDelete\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "Deploy\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "DeployVotingTemplates\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "GroupAccessManager\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "GroupsAssign\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "GroupsCreate\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "GroupsDelete\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "GroupsUnassign\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "TokensRefundAccept\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "TokensRefundReject\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingCandidateAccept\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingCreate\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingDecisionAccept\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingDecisionCheck\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingDecisionReject\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingDelete\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingInvite\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingNotificationSend\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingRunTokenRefund\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingStatusUpdate\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingSubjectCandidates\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingSubjectCheck\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingSubjectContract\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingSubjectDocument\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingSubjectSettings\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingTemplateCreate\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" -> "VotingUpdate\ncontract"  [ color=red ]
+"DeployBasicPermissions\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"DeployRoles\ncontract" -> "Deploy\ncontract"  [ color=red ]
+"DeployRoles\ncontract" -> "RolesAccessManager\ncontract"  [ color=red ]
+"1app_params\ntable" -> "DeployRoles\ncontract"
+"1roles\ntable" -> "DeployRoles\ncontract"
+"1roles_participants\ntable" -> "DeployRoles\ncontract"
+"1applications\ntable" -> "DeployRoles\ncontract"
+"DeployRoles\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"DeploySections\ncontract" -> "Deploy\ncontract"  [ color=red ]
+"sections\ntable" -> "DeploySections\ncontract"
+"DeploySections\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"DeploySystemPermissions\ncontract" -> "Deploy\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "DeployRoles\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "NotificationsBroadcast\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "NotificationsClose\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "NotificationsProcess\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "NotificationsSend\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "NotificationsUpdateParams\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "ProfileEdit\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "RolesAccessManager\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "RolesAssign\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "RolesCreate\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "RolesDelete\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "RolesUnassign\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "TokensDecDeposit\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "TokensIncDeposit\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "TokensLockoutMember\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "TokensTransfer\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "VotingDecisionCheck\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" -> "VotingVesAccept\ncontract"  [ color=red ]
+"DeploySystemPermissions\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"DeployVotingTemplates\ncontract" -> "Deploy\ncontract"  [ color=red ]
+"DeployVotingTemplates\ncontract" -> "TokensRefundAccept\ncontract"  [ color=red ]
+"DeployVotingTemplates\ncontract" -> "TokensRefundReject\ncontract"  [ color=red ]
+"DeployVotingTemplates\ncontract" -> "VotingVesAccept\ncontract"  [ color=red ]
+"1app_params\ntable" -> "DeployVotingTemplates\ncontract"
+"1applications\ntable" -> "DeployVotingTemplates\ncontract"
+"1voting_templates\ntable" -> "DeployVotingTemplates\ncontract"
+"DeployVotingTemplates\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "FormStateSave\ncontract" -> "BufferManager\ncontract"  [ color=red ]
 "FormStateSave\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "GroupAccessManager\ncontract" -> "GroupsAccessCheck\ncontract"  [ color=red ]
@@ -447,8 +528,6 @@ size="30";
 "MembershipRequest\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "MetricsUpdate\ncontract" -> "BufferManager\ncontract"  [ color=red ]
 "MetricsUpdate\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"NodeRemoveByKey\ncontract" -> "ConsortiumMemberResign\ncontract"  [ color=red ]
-"NodeRemoveByKey\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "1members\ntable" -> "NotificationsBroadcast\ncontract"
 "1keys\ntable" -> "NotificationsBroadcast\ncontract"
 "1ecosystems\ntable" -> "NotificationsBroadcast\ncontract"
@@ -472,6 +551,8 @@ size="30";
 "1keys\ntable" -> "NotificationsSend\ncontract"
 "1roles\ntable" -> "NotificationsSend\ncontract"
 "1roles_participants\ntable" -> "NotificationsSend\ncontract"
+"1groups\ntable" -> "NotificationsSend\ncontract"
+"1groups_participants\ntable" -> "NotificationsSend\ncontract"
 "NotificationsSend\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "NotificationsUpdateParams\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "1app_params\ntable" -> "PlatformAppsSettings\ncontract"
@@ -493,8 +574,6 @@ size="30";
 "RolesAssign\ncontract" -> "DelegateRefresh\ncontract"  [ color=red ]
 "RolesAssign\ncontract" -> "InvestorRefresh\ncontract"  [ color=red ]
 "RolesAssign\ncontract" -> "RolesAccessCheck\ncontract"  [ color=red ]
-"RolesAssign\ncontract" -> "ConsortiumMemberRequest\ncontract"  [ color=red ]
-"RolesAssign\ncontract" -> "VotingConsortiumMemberAccept\ncontract"  [ color=red ]
 "1members\ntable" -> "RolesAssign\ncontract"
 "1keys\ntable" -> "RolesAssign\ncontract"
 "1roles\ntable" -> "RolesAssign\ncontract"
@@ -511,12 +590,6 @@ size="30";
 "RolesDelete\ncontract" -> "RolesUnassign\ncontract"  [ color=red ]
 "1roles_participants\ntable" -> "RolesDelete\ncontract"
 "RolesDelete\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"RolesInstall\ncontract" -> "RolesAccessManager\ncontract"  [ color=red ]
-"1app_params\ntable" -> "RolesInstall\ncontract"
-"1roles\ntable" -> "RolesInstall\ncontract"
-"1roles_participants\ntable" -> "RolesInstall\ncontract"
-"1applications\ntable" -> "RolesInstall\ncontract"
-"RolesInstall\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "RolesRequest\ncontract" -> "NotificationsSend\ncontract"  [ color=red ]
 "1roles\ntable" -> "RolesRequest\ncontract"
 "1roles_participants\ntable" -> "RolesRequest\ncontract"
@@ -531,11 +604,12 @@ size="30";
 "RolesUnassign\ncontract" -> "DelegateRefresh\ncontract"  [ color=red ]
 "RolesUnassign\ncontract" -> "InvestorRefresh\ncontract"  [ color=red ]
 "RolesUnassign\ncontract" -> "RolesAccessCheck\ncontract"  [ color=red ]
-"RolesUnassign\ncontract" -> "ConsortiumMemberRequest\ncontract"  [ color=red ]
-"RolesUnassign\ncontract" -> "VotingConsortiumMemberAccept\ncontract"  [ color=red ]
 "1roles_participants\ntable" -> "RolesUnassign\ncontract"
 "1roles\ntable" -> "RolesUnassign\ncontract"
 "RolesUnassign\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"TokensDecDeposit\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"1keys\ntable" -> "TokensIncDeposit\ncontract"
+"TokensIncDeposit\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "TokensLockoutMember\ncontract" -> "BlockMember\ncontract"  [ color=red ]
 "TokensLockoutMember\ncontract" -> "TokensRefundAccept\ncontract"  [ color=red ]
 "TokensLockoutMember\ncontract" -> "TokensRefundReject\ncontract"  [ color=red ]
@@ -559,20 +633,6 @@ size="30";
 "1ecosystems\ntable" -> "TokensTransfer\ncontract"
 "1keys\ntable" -> "TokensTransfer\ncontract"
 "TokensTransfer\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"ConsortiumMemberDelete\ncontract" -> "RolesUnassign\ncontract"  [ color=red ]
-"1consortium_member_requests\ntable" -> "ConsortiumMemberDelete\ncontract"
-"1roles_participants\ntable" -> "ConsortiumMemberDelete\ncontract"
-"ConsortiumMemberDelete\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"ConsortiumMemberRequest\ncontract" -> "RolesAssign\ncontract"  [ color=red ]
-"1keys\ntable" -> "ConsortiumMemberRequest\ncontract"
-"1applications\ntable" -> "ConsortiumMemberRequest\ncontract"
-"1roles\ntable" -> "ConsortiumMemberRequest\ncontract"
-"ConsortiumMemberRequest\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"ConsortiumMemberResign\ncontract" -> "NodeRemoveByKey\ncontract"  [ color=red ]
-"ConsortiumMemberResign\ncontract" -> "RolesUnassign\ncontract"  [ color=red ]
-"1applications\ntable" -> "ConsortiumMemberResign\ncontract"
-"1roles_participants\ntable" -> "ConsortiumMemberResign\ncontract"
-"ConsortiumMemberResign\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "VotingCandidateAccept\ncontract" -> "NotificationsClose\ncontract"  [ color=red ]
 "VotingCandidateAccept\ncontract" -> "VotingUpdate\ncontract"  [ color=red ]
 "1notifications\ntable" -> "VotingCandidateAccept\ncontract"
@@ -585,8 +645,8 @@ size="30";
 "VotingCreate\ncontract" -> "VotingInvite\ncontract"  [ color=red ]
 "VotingCreate\ncontract" -> "VotingRunEditEcosysParam\ncontract"  [ color=red ]
 "VotingCreate\ncontract" -> "VotingRunEditPlatformParam\ncontract"  [ color=red ]
-"VotingCreate\ncontract" -> "VotingRunNewConsortiumMember\ncontract"  [ color=red ]
-"VotingCreate\ncontract" -> "VotingRunRemoveConsortiumMember\ncontract"  [ color=red ]
+"VotingCreate\ncontract" -> "VotingRunNewCNConnection\ncontract"  [ color=red ]
+"VotingCreate\ncontract" -> "VotingRunRemoveCNConnection\ncontract"  [ color=red ]
 "VotingCreate\ncontract" -> "VotingRunTokenRefund\ncontract"  [ color=red ]
 "VotingCreate\ncontract" -> "VotingRunVes\ncontract"  [ color=red ]
 "1keys\ntable" -> "VotingCreate\ncontract"
@@ -624,6 +684,7 @@ size="30";
 "1keys\ntable" -> "VotingInvite\ncontract"
 "1votings_participants\ntable" -> "VotingInvite\ncontract"
 "1roles_participants\ntable" -> "VotingInvite\ncontract"
+"1groups_participants\ntable" -> "VotingInvite\ncontract"
 "1roles\ntable" -> "VotingInvite\ncontract"
 "VotingInvite\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "VotingNotificationSend\ncontract" -> "NotificationsSend\ncontract"  [ color=red ]
@@ -638,17 +699,17 @@ size="30";
 "1applications\ntable" -> "VotingRunEditPlatformParam\ncontract"
 "1app_params\ntable" -> "VotingRunEditPlatformParam\ncontract"
 "VotingRunEditPlatformParam\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"VotingRunNewConsortiumMember\ncontract" -> "DelegateRefresh\ncontract"  [ color=red ]
-"VotingRunNewConsortiumMember\ncontract" -> "VotingTemplateRun\ncontract"  [ color=red ]
-"1keys\ntable" -> "VotingRunNewConsortiumMember\ncontract"
-"1applications\ntable" -> "VotingRunNewConsortiumMember\ncontract"
-"1app_params\ntable" -> "VotingRunNewConsortiumMember\ncontract"
-"1consortium_member_requests\ntable" -> "VotingRunNewConsortiumMember\ncontract"
-"VotingRunNewConsortiumMember\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"VotingRunRemoveConsortiumMember\ncontract" -> "VotingTemplateRun\ncontract"  [ color=red ]
-"1applications\ntable" -> "VotingRunRemoveConsortiumMember\ncontract"
-"1app_params\ntable" -> "VotingRunRemoveConsortiumMember\ncontract"
-"VotingRunRemoveConsortiumMember\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"VotingRunNewCNConnection\ncontract" -> "CNConnectionRequest\ncontract"  [ color=red ]
+"VotingRunNewCNConnection\ncontract" -> "DelegateRefresh\ncontract"  [ color=red ]
+"VotingRunNewCNConnection\ncontract" -> "VotingTemplateRun\ncontract"  [ color=red ]
+"1applications\ntable" -> "VotingRunNewCNConnection\ncontract"
+"1app_params\ntable" -> "VotingRunNewCNConnection\ncontract"
+"1cn_connection_requests\ntable" -> "VotingRunNewCNConnection\ncontract"
+"VotingRunNewCNConnection\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"VotingRunRemoveCNConnection\ncontract" -> "VotingTemplateRun\ncontract"  [ color=red ]
+"1applications\ntable" -> "VotingRunRemoveCNConnection\ncontract"
+"1app_params\ntable" -> "VotingRunRemoveCNConnection\ncontract"
+"VotingRunRemoveCNConnection\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "VotingRunTokenRefund\ncontract" -> "TokensLockoutMember\ncontract"  [ color=red ]
 "VotingRunTokenRefund\ncontract" -> "VotingTemplateRun\ncontract"  [ color=red ]
 "VotingRunTokenRefund\ncontract" -> "tokens_refund\ntable"  [ color="" ]
@@ -696,8 +757,8 @@ size="30";
 "VotingTemplateRun\ncontract" -> "VotingInvite\ncontract"  [ color=red ]
 "VotingTemplateRun\ncontract" -> "VotingRunEditEcosysParam\ncontract"  [ color=red ]
 "VotingTemplateRun\ncontract" -> "VotingRunEditPlatformParam\ncontract"  [ color=red ]
-"VotingTemplateRun\ncontract" -> "VotingRunNewConsortiumMember\ncontract"  [ color=red ]
-"VotingTemplateRun\ncontract" -> "VotingRunRemoveConsortiumMember\ncontract"  [ color=red ]
+"VotingTemplateRun\ncontract" -> "VotingRunNewCNConnection\ncontract"  [ color=red ]
+"VotingTemplateRun\ncontract" -> "VotingRunRemoveCNConnection\ncontract"  [ color=red ]
 "VotingTemplateRun\ncontract" -> "VotingRunTokenRefund\ncontract"  [ color=red ]
 "VotingTemplateRun\ncontract" -> "VotingRunVes\ncontract"  [ color=red ]
 "VotingTemplateRun\ncontract" -> "VotingSubjectCandidates\ncontract"  [ color=red ]
@@ -709,26 +770,9 @@ size="30";
 "1roles\ntable" -> "VotingTemplateRun\ncontract"
 "1roles_participants\ntable" -> "VotingTemplateRun\ncontract"
 "VotingTemplateRun\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"VotingTemplatesInstall\ncontract" -> "TokensRefundAccept\ncontract"  [ color=red ]
-"VotingTemplatesInstall\ncontract" -> "TokensRefundReject\ncontract"  [ color=red ]
-"VotingTemplatesInstall\ncontract" -> "VotingConsortiumMemberAccept\ncontract"  [ color=red ]
-"VotingTemplatesInstall\ncontract" -> "VotingVesAccept\ncontract"  [ color=red ]
-"1app_params\ntable" -> "VotingTemplatesInstall\ncontract"
-"1applications\ntable" -> "VotingTemplatesInstall\ncontract"
-"1voting_templates\ntable" -> "VotingTemplatesInstall\ncontract"
-"VotingTemplatesInstall\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "VotingUpdate\ncontract" -> "VotingDecisionCheck\ncontract"  [ color=red ]
 "1votings\ntable" -> "VotingUpdate\ncontract"
 "VotingUpdate\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"VotingConsortiumMemberAccept\ncontract" -> "RolesAssign\ncontract"  [ color=red ]
-"VotingConsortiumMemberAccept\ncontract" -> "RolesUnassign\ncontract"  [ color=red ]
-"VotingConsortiumMemberAccept\ncontract" -> "VotingDecisionCheck\ncontract"  [ color=red ]
-"1applications\ntable" -> "VotingConsortiumMemberAccept\ncontract"
-"1voting_templates\ntable" -> "VotingConsortiumMemberAccept\ncontract"
-"1votings_subject\ntable" -> "VotingConsortiumMemberAccept\ncontract"
-"1roles_participants\ntable" -> "VotingConsortiumMemberAccept\ncontract"
-"1roles\ntable" -> "VotingConsortiumMemberAccept\ncontract"
-"VotingConsortiumMemberAccept\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "VotingVesAccept\ncontract" -> "VotingDecisionCheck\ncontract"  [ color=red ]
 "1applications\ntable" -> "VotingVesAccept\ncontract"
 "1voting_templates\ntable" -> "VotingVesAccept\ncontract"
@@ -742,11 +786,12 @@ size="30";
 "VotingWizardCreate\ncontract" -> "VotingSubjectDocument\ncontract"  [ color=red ]
 "VotingWizardCreate\ncontract" -> "VotingSubjectSettings\ncontract"  [ color=red ]
 "1roles_participants\ntable" -> "VotingWizardCreate\ncontract"
+"1groups_participants\ntable" -> "VotingWizardCreate\ncontract"
 "VotingWizardCreate\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"cn_connection_requests\ntable" [color="", fontcolor="", group=tables, shape=""];
 "groups\ntable" [color="", fontcolor="", group=tables, shape=""];
 "groups_participants\ntable" [color="", fontcolor="", group=tables, shape=""];
 "tokens_refund\ntable" [color="", fontcolor="", group=tables, shape=""];
-"consortium_member_requests\ntable" [color="", fontcolor="", group=tables, shape=""];
 "voting_templates\ntable" [color="", fontcolor="", group=tables, shape=""];
 "votings\ntable" [color="", fontcolor="", group=tables, shape=""];
 "votings_participants\ntable" [color="", fontcolor="", group=tables, shape=""];

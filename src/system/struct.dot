@@ -1,6 +1,6 @@
 digraph G {
 fontsize="24";
-label="system\nSunday, 07-Jul-19 12:06:44 +10";
+label="system\nTuesday, 22-Oct-19 17:22:42 +10";
 nojustify=true;
 ordering=out;
 rankdir=LR;
@@ -274,16 +274,20 @@ size="30";
 "search\nblock" [color=green, fontcolor=green, group=blocks, shape=record];
 "1applications\ntable" -> "AdminCondition\ncontract"
 "AdminCondition\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"AppInstall\ncontract" -> "BufferManager\ncontract"  [ color=red ]
+"AppInstall\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "AppInstall\ncontract" -> "Import\ncontract"  [ color=red ]
 "AppInstall\ncontract" -> "NewApplication\ncontract"  [ color=red ]
 "1applications\ntable" -> "AppInstall\ncontract"
 "1app_params\ntable" -> "AppInstall\ncontract"
-"1buffer_data\ntable" -> "AppInstall\ncontract"
 "AppInstall\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"AppendMenu\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1menu\ntable" -> "AppendMenu\ncontract"
 "AppendMenu\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"AppendPage\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1pages\ntable" -> "AppendPage\ncontract"
 "AppendPage\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"BindWallet\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1notifications\ntable" -> "BindWallet\ncontract"
 "1contracts\ntable" -> "BindWallet\ncontract"
 "BindWallet\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
@@ -293,53 +297,71 @@ size="30";
 "BufferFileUpload\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "1buffer_data\ntable" -> "BufferManager\ncontract"
 "BufferManager\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"CallDelayedContract\ncontract" -> "FullNodeCondition\ncontract"  [ color=red ]
 "1delayed_contracts\ntable" -> "CallDelayedContract\ncontract"
 "CallDelayedContract\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "CheckNodesBan\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"DelApplication\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1applications\ntable" -> "DelApplication\ncontract"
 "DelApplication\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "1applications\ntable" -> "DeveloperCondition\ncontract"
-"1roles_participants\ntable" -> "DeveloperCondition\ncontract"
 "DeveloperCondition\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditAppParam\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1app_params\ntable" -> "EditAppParam\ncontract"
 "EditAppParam\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditApplication\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1applications\ntable" -> "EditApplication\ncontract"
 "EditApplication\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditBlock\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1blocks\ntable" -> "EditBlock\ncontract"
 "EditBlock\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditColumn\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1tables\ntable" -> "EditColumn\ncontract"
 "EditColumn\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditContract\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1contracts\ntable" -> "EditContract\ncontract"
 "EditContract\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditDelayedContract\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "EditDelayedContract\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditEcosystemName\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1ecosystems\ntable" -> "EditEcosystemName\ncontract"
 "EditEcosystemName\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditLang\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1languages\ntable" -> "EditLang\ncontract"
 "EditLang\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "EditLangJoint\ncontract" -> "EditLang\ncontract"  [ color=red ]
 "EditLangJoint\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditMenu\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1menu\ntable" -> "EditMenu\ncontract"
 "EditMenu\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditPage\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1pages\ntable" -> "EditPage\ncontract"
 "EditPage\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditParameter\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1parameters\ntable" -> "EditParameter\ncontract"
 "1keys\ntable" -> "EditParameter\ncontract"
 "EditParameter\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditSection\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1sections\ntable" -> "EditSection\ncontract"
 "EditSection\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"EditTable\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "EditTable\ncontract" -> "NewColumn\ncontract"  [ color=red ]
 "EditTable\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"Export\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "Export\ncontract" -> "UploadBinary\ncontract"  [ color=red ]
 "tbl\ntable" -> "Export\ncontract"
 "1buffer_data\ntable" -> "Export\ncontract"
 "1applications\ntable" -> "Export\ncontract"
 "Export\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"ExportNewApp\ncontract" -> "BufferManager\ncontract"  [ color=red ]
+"ExportNewApp\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "ExportNewApp\ncontract" -> "Export\ncontract"  [ color=red ]
 "1applications\ntable" -> "ExportNewApp\ncontract"
 "1pages\ntable" -> "ExportNewApp\ncontract"
 "1menu\ntable" -> "ExportNewApp\ncontract"
-"1buffer_data\ntable" -> "ExportNewApp\ncontract"
 "ExportNewApp\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"FullNodeCondition\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"Import\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "Import\ncontract" -> "EditAppParam\ncontract"  [ color=red ]
 "Import\ncontract" -> "EditBlock\ncontract"  [ color=red ]
 "Import\ncontract" -> "EditContract\ncontract"  [ color=red ]
@@ -357,69 +379,86 @@ size="30";
 "1applications\ntable" -> "Import\ncontract"
 "tbl\ntable" -> "Import\ncontract"
 "Import\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"ImportUpload\ncontract" -> "BufferManager\ncontract"  [ color=red ]
+"ImportUpload\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "ImportUpload\ncontract" -> "Import\ncontract"  [ color=red ]
-"1buffer_data\ntable" -> "ImportUpload\ncontract"
 "1applications\ntable" -> "ImportUpload\ncontract"
 "ImportUpload\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"ItemChangeAppId\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "Table\ntable" -> "ItemChangeAppId\ncontract"
 "ItemChangeAppId\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "MainCondition\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewAppParam\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1app_params\ntable" -> "NewAppParam\ncontract"
 "NewAppParam\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewApplication\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1applications\ntable" -> "NewApplication\ncontract"
 "NewApplication\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "NewBadBlock\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewBlock\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1blocks\ntable" -> "NewBlock\ncontract"
 "NewBlock\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewColumn\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "NewColumn\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewContract\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "NewContract\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewDelayedContract\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "NewDelayedContract\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewEcosystem\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "NewEcosystem\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewLang\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1languages\ntable" -> "NewLang\ncontract"
 "NewLang\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "NewLangJoint\ncontract" -> "NewLang\ncontract"  [ color=red ]
 "NewLangJoint\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewMenu\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1menu\ntable" -> "NewMenu\ncontract"
 "NewMenu\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewPage\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1pages\ntable" -> "NewPage\ncontract"
 "NewPage\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewParameter\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1parameters\ntable" -> "NewParameter\ncontract"
 "NewParameter\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewSection\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1sections\ntable" -> "NewSection\ncontract"
 "NewSection\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"NewTable\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "NewTable\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "NewTableJoint\ncontract" -> "NewColumn\ncontract"  [ color=red ]
 "NewTableJoint\ncontract" -> "NewTable\ncontract"  [ color=red ]
 "NewTableJoint\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"NewUser\ncontract" -> "BufferManager\ncontract"  [ color=red ]
 "NewUser\ncontract" -> "keys\ntable"  [ color="" ]
 "1keys\ntable" -> "NewUser\ncontract"
 "NewUser\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"NodeOwnerCondition\ncontract" -> "MainCondition\ncontract"  [ color=red ]
-"NodeOwnerCondition\ncontract" -> "full_nodes\ncontract"  [ color=red ]
-"NodeOwnerCondition\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "PlatformAppsInstall\ncontract" -> "AppInstall\ncontract"  [ color=red ]
+"PlatformAppsInstall\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1applications\ntable" -> "PlatformAppsInstall\ncontract"
 "PlatformAppsInstall\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"SectionLevelDown\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1sections\ntable" -> "SectionLevelDown\ncontract"
 "SectionLevelDown\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"SectionLevelUp\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1sections\ntable" -> "SectionLevelUp\ncontract"
 "SectionLevelUp\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"SectionRoles\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1sections\ntable" -> "SectionRoles\ncontract"
 "SectionRoles\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"SelectApp\ncontract" -> "BufferManager\ncontract"  [ color=red ]
+"SelectApp\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1applications\ntable" -> "SelectApp\ncontract"
-"1buffer_data\ntable" -> "SelectApp\ncontract"
 "SelectApp\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"UnbindWallet\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1contracts\ntable" -> "UnbindWallet\ncontract"
 "UnbindWallet\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "UpdateMetrics\ncontract" -> "MainCondition\ncontract"  [ color=red ]
 "1metrics\ntable" -> "UpdateMetrics\ncontract"
 "UpdateMetrics\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"UpdateSysParam\ncontract" -> "AdminCondition\ncontract"  [ color=red ]
+"1votings\ntable" -> "UpdateSysParam\ncontract"
 "UpdateSysParam\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
+"UploadBinary\ncontract" -> "DeveloperCondition\ncontract"  [ color=red ]
 "1binaries\ntable" -> "UploadBinary\ncontract"
 "UploadBinary\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 "UploadFile\ncontract" -> "UploadBinary\ncontract"  [ color=red ]
 "UploadFile\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
-"full_nodes\ncontract" [color=red, fontcolor=red, group=contracts, shape=record];
 }
